@@ -1,4 +1,4 @@
-# 🍎 Calculadora Nutrium - Clean Architecture
+# Calculadora Nutrium - Clean Architecture
 
 <div align="center">
 
@@ -7,13 +7,13 @@
 ![Prisma](https://img.shields.io/badge/Prisma-7-2D3748)
 ![Supabase](https://img.shields.io/badge/Supabase-Postgres-3ECF8E)
 
-**Nutritional Calculator with Clean Architecture** 🚀
+**Nutritional Calculator with Clean Architecture** 
 
 </div>
 
 ---
 
-## 🏗️ Arquitectura Clean Architecture
+## Arquitectura Clean Architecture
 
 ```
 lib/
@@ -39,15 +39,19 @@ app/                           # CAPA 4: Presentación (Next.js App Router)
 
 ---
 
-## 🚀 Instalación
+## Despliegue - Vercel
 
 ```bash
-npm install
-cp .env.example .env
-npx prisma migrate dev
-npm run test:db
-npm run dev
+npm run build
+# Configuración Vercel:
+# - Build Command: npm run build
+# - Output Directory: .next
+# - Install Command: npm install
 ```
+
+**URL de producción:**
+
+🔗 https://calculadora-imc-nextjs.vercel.app
 
 ---
 
@@ -60,11 +64,11 @@ npm run dev
 
 ---
 
-## 📁 Estructura del Proyecto
+##  Estructura del Proyecto
 
 ```
 calculadora-nutrium/
-├── lib/                          # ✨ CLEAN ARCHITECTURE
+├── lib/                          # CLEAN ARCHITECTURE
 │   ├── domain/                   # Entidades puras
 │   ├── application/              # Casos de uso
 │   └── infrastructure/           # DB + Auth
@@ -99,16 +103,17 @@ JWT_SECRET="your-secret-key"
 
 ---
 
-## 📦 Scripts
+## Scripts
 
 ```json
 {
   "scripts": {
     "dev": "next dev",
-    "build": "npm run test:db && npm run test:unit && next build",
+    "build": "next build",
+    "start": "next start",
+    "postinstall": "prisma generate",
     "test": "jest",
     "test:db": "jest tests/integration/database",
-    "test:unit": "jest tests/unit",
     "lint": "eslint . --fix",
     "type-check": "tsc --noEmit"
   }
