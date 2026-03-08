@@ -13,14 +13,22 @@
     "isolatedModules": true,
     "jsx": "react-jsx",
     "incremental": true,
+    "baseUrl": ".",
     "plugins": [
       {
         "name": "next"
       }
     ],
     "paths": {
-      "@/*": ["./*"]
-    }
+      "@/app/*": ["./app/*"],
+      "@/app": ["./app"],
+      "@/*": ["./lib/*"],
+      "@/domain/*": ["./lib/domain/*"],
+      "@/application/*": ["./lib/application/*"],
+      "@/infrastructure/*": ["./lib/infrastructure/*"],
+      "@/lib/*": ["./lib/*"]
+    },
+    "types": ["jest", "@testing-library/jest-dom"]
   },
   "include": [
     "next-env.d.ts",
@@ -28,7 +36,9 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts",
-    "**/*.mts"
+    "**/*.mts",
+    "jest.d.ts",
+    "jest.setup.js"
   ],
   "exclude": ["node_modules"]
 }
