@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "npm run test:db && npm run test:unit && next build",
+    "build": "npm run test && next build",
     "test": "jest",
     "test:db": "jest tests/integration/database --threads=1",
     "test:unit": "jest tests/unit --coverage",
