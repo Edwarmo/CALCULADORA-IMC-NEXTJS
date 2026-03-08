@@ -31,17 +31,8 @@ jest.mock('pg', () => ({
   })),
 }));
 
-// Mock bcryptjs
-jest.mock('bcryptjs', () => ({
-  hash: jest.fn().mockResolvedValue('hashed_password'),
-  compare: jest.fn().mockResolvedValue(true),
-}));
-
-// Mock jsonwebtoken
-jest.mock('jsonwebtoken', () => ({
-  sign: jest.fn().mockReturnValue('mock_token'),
-  verify: jest.fn().mockReturnValue({ userId: 'user_id', email: 'test@test.com', type: 'refresh' }),
-}));
+// Note: bcryptjs and jsonwebtoken are NOT globally mocked
+// Individual test files should mock them as needed
 
 // Mock Supabase
 jest.mock('@supabase/ssr', () => ({
@@ -58,16 +49,6 @@ jest.mock('@supabase/supabase-js', () => ({
     auth: {
       signInWithPassword: jest.fn(),
       signUp: jest.fn(),
-      signOut: jest.fn(),
-      getSession: jest.fn(),
-      getUser: jest.fn(),
     },
   }),
 }));
-
-// Mock environment variables
-process.env.DATABASE_URL = 'postgresql://test:test@localhost:5432/test';
-process.env.DIRECT_URL = 'postgresql://test:test@localhost:5432/test';
-process.env.JWT_SECRET = 'test-secret';
-process.env.NEXT_PUBLIC_SUPABASE_URL = 'https://test.supabase.co';
-process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY = 'test-key';
