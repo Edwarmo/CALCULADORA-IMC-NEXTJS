@@ -5,7 +5,6 @@
 
 import { prisma } from '@/lib/infrastructure/prisma/client';
 import type { Operation } from '@/lib/domain/entities';
-import type { Prisma } from '@prisma/client';
 
 export interface OperacionData {
   id: string;
@@ -29,7 +28,7 @@ export async function getUserOperations(userId: string, limit = 20): Promise<Ope
     take: limit,
   });
 
-  return operaciones.map((op: Prisma.OperacionGetPayload<null>) => ({
+  return operaciones.map((op) => ({
     id: op.id,
     usuarioId: op.usuarioId,
     tipo: op.tipo,

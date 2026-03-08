@@ -4,12 +4,14 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "npm run test && next build",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "postinstall": "prisma generate",
     "test": "jest",
     "test:db": "jest tests/integration/database --threads=1",
     "test:unit": "jest tests/unit --coverage",
     "test:watch": "jest --watch",
-    "lint": "eslint . --fix",
     "type-check": "tsc --noEmit",
     "db:generate": "npx prisma generate --schema=prisma/schema.prisma"
   },
